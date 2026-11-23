@@ -83,6 +83,7 @@ mod booleans;
 mod borrow_deref_ref;
 mod box_default;
 mod bufreader_stdin;
+mod builtin_type_shadow;
 mod byte_char_slices;
 mod cargo;
 mod casts;
@@ -559,6 +560,7 @@ rustc_lint::late_lint_methods!(
         ArithmeticSideEffects: operators::arithmetic_side_effects::ArithmeticSideEffects = operators::arithmetic_side_effects::ArithmeticSideEffects::new(conf),
         DumpHir: utils::dump_hir::DumpHir = utils::dump_hir::DumpHir,
         Author: utils::author::Author = utils::author::Author,
+        BuiltinTypeShadow: builtin_type_shadow::BuiltinTypeShadow = builtin_type_shadow::BuiltinTypeShadow,
         AwaitHolding: await_holding_invalid::AwaitHolding = await_holding_invalid::AwaitHolding::new(tcx, conf),
         SerdeApi: serde_api::SerdeApi = serde_api::SerdeApi,
         Types: types::Types = types::Types::new(conf),

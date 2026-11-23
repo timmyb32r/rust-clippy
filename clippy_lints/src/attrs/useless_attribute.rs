@@ -10,14 +10,19 @@ use rustc_lint::{EarlyContext, LintContext as _};
 pub(super) fn check(cx: &EarlyContext<'_>, item: &Item, attrs: &[Attribute]) {
     let skip_unused_imports = attrs.iter().any(|attr| attr.has_name(sym::macro_use));
 
-    for attr in attrs {
+    'attrs: for attr in attrs {
         if let Some(lint_list) = &attr.meta_item_list()
             && attr.name().is_some_and(is_lint_level)
         {
             for lint in lint_list {
+                let lint_name = namespace_and_lint(lint);
+                if lint_name == (Some(sym::clippy), Some(sym::builtin_type_shadow)) {
+                    continue 'attrs;
+                }
+
                 match item.kind {
                     ItemKind::Use(..) => {
-                        let (namespace @ (Some(sym::clippy) | None), Some(name)) = namespace_and_lint(lint) else {
+                        let (namespace @ (Some(sym::clippy) | None), Some(name)) = lint_name else {
                             return;
                         };
 

@@ -15,19 +15,16 @@ use rustc_span::Span;
 
 declare_clippy_lint! {
     /// ### What it does
-    /// Warns if a generic shadows a built-in type.
+    /// Checks for type parameters, declarations, and explicit imports that shadow a built-in type.
     ///
     /// ### Why is this bad?
-    /// This gives surprising type errors.
+    /// Shadowing can silently change the meaning of a type annotation.
     ///
     /// ### Example
     ///
     /// ```ignore
-    /// impl<u32> Foo<u32> {
-    ///     fn impl_func(&self) -> u32 {
-    ///         42
-    ///     }
-    /// }
+    /// use core::primitive::u16 as u8;
+    /// let value: u8 = 300;
     /// ```
     #[clippy::version = "pre 1.29.0"]
     pub BUILTIN_TYPE_SHADOW,

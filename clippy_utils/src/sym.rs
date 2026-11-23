@@ -174,6 +174,7 @@ generate! {
     btreemap_insert,
     btreeset_iter,
     build_hasher,
+    builtin_type_shadow,
     by_ref,
     bytes,
     capacity,
