@@ -1,0 +1,2 @@
+builtin-type-shadow-scope = "type-namespace"
+builtin-type-shadow-check-external-macros = false

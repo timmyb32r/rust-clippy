@@ -6,7 +6,7 @@ use rustc_attr_ir::RustcVersion;
 use rustc_hir::{HirId, Lit};
 use rustc_lint::{LateContext, LateLintPass, impl_lint_pass};
 use rustc_span::{Span, symbol};
-use std::f64::consts as f64;
+use std::f64::consts;
 
 declare_clippy_lint! {
     /// ### What it does
@@ -43,27 +43,27 @@ impl_lint_pass!(ApproxConstant => [APPROX_CONSTANT]);
 
 // Tuples are of the form (constant, name, min_digits, msrv)
 const KNOWN_CONSTS: [(f64, &str, usize, Option<RustcVersion>); 21] = [
-    (f64::E, "E", 4, None),
-    (f64::FRAC_1_PI, "FRAC_1_PI", 4, None),
-    (f64::FRAC_1_SQRT_2, "FRAC_1_SQRT_2", 5, None),
-    (f64::FRAC_2_PI, "FRAC_2_PI", 5, None),
-    (f64::FRAC_2_SQRT_PI, "FRAC_2_SQRT_PI", 5, None),
-    (f64::FRAC_PI_2, "FRAC_PI_2", 5, None),
-    (f64::FRAC_PI_3, "FRAC_PI_3", 5, None),
-    (f64::FRAC_PI_4, "FRAC_PI_4", 5, None),
-    (f64::FRAC_PI_6, "FRAC_PI_6", 5, None),
-    (f64::FRAC_PI_8, "FRAC_PI_8", 5, None),
-    (f64::LN_2, "LN_2", 5, None),
-    (f64::LN_10, "LN_10", 5, None),
-    (f64::LOG2_10, "LOG2_10", 5, Some(msrvs::LOG2_10)),
-    (f64::LOG2_E, "LOG2_E", 5, None),
-    (f64::LOG10_2, "LOG10_2", 5, Some(msrvs::LOG10_2)),
-    (f64::LOG10_E, "LOG10_E", 5, None),
-    (f64::PI, "PI", 3, None),
-    (f64::SQRT_2, "SQRT_2", 5, None),
-    (f64::TAU, "TAU", 3, Some(msrvs::TAU)),
-    (f64::EULER_GAMMA, "EULER_GAMMA", 5, Some(msrvs::EULER_GAMMA)),
-    (f64::GOLDEN_RATIO, "GOLDEN_RATIO", 5, Some(msrvs::GOLDEN_RATIO)),
+    (consts::E, "E", 4, None),
+    (consts::FRAC_1_PI, "FRAC_1_PI", 4, None),
+    (consts::FRAC_1_SQRT_2, "FRAC_1_SQRT_2", 5, None),
+    (consts::FRAC_2_PI, "FRAC_2_PI", 5, None),
+    (consts::FRAC_2_SQRT_PI, "FRAC_2_SQRT_PI", 5, None),
+    (consts::FRAC_PI_2, "FRAC_PI_2", 5, None),
+    (consts::FRAC_PI_3, "FRAC_PI_3", 5, None),
+    (consts::FRAC_PI_4, "FRAC_PI_4", 5, None),
+    (consts::FRAC_PI_6, "FRAC_PI_6", 5, None),
+    (consts::FRAC_PI_8, "FRAC_PI_8", 5, None),
+    (consts::LN_2, "LN_2", 5, None),
+    (consts::LN_10, "LN_10", 5, None),
+    (consts::LOG2_10, "LOG2_10", 5, Some(msrvs::LOG2_10)),
+    (consts::LOG2_E, "LOG2_E", 5, None),
+    (consts::LOG10_2, "LOG10_2", 5, Some(msrvs::LOG10_2)),
+    (consts::LOG10_E, "LOG10_E", 5, None),
+    (consts::PI, "PI", 3, None),
+    (consts::SQRT_2, "SQRT_2", 5, None),
+    (consts::TAU, "TAU", 3, Some(msrvs::TAU)),
+    (consts::EULER_GAMMA, "EULER_GAMMA", 5, Some(msrvs::EULER_GAMMA)),
+    (consts::GOLDEN_RATIO, "GOLDEN_RATIO", 5, Some(msrvs::GOLDEN_RATIO)),
 ];
 
 pub struct ApproxConstant {

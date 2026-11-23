@@ -1,9 +1,10 @@
 use crate::ConfMetadata;
 use crate::de::{DeserializeOrDefault, DiagCtxt, FromDefault, create_value_list_msg, find_closest_match};
 use crate::types::{
-    DisallowedPath, DisallowedPathWithoutReplacement, InherentImplLintScope, MacroMatcher, MatchLintBehaviour,
-    PubUnderscoreFieldsBehaviour, Rename, SourceItemOrdering, SourceItemOrderingModuleItemGroupings,
-    SourceItemOrderingTraitAssocItemKinds, SourceItemOrderingWithinModuleItemGroupings, TraitImplItemOrder,
+    BuiltinTypeShadowScope, DisallowedPath, DisallowedPathWithoutReplacement, InherentImplLintScope, MacroMatcher,
+    MatchLintBehaviour, PubUnderscoreFieldsBehaviour, Rename, SourceItemOrdering,
+    SourceItemOrderingModuleItemGroupings, SourceItemOrderingTraitAssocItemKinds,
+    SourceItemOrderingWithinModuleItemGroupings, TraitImplItemOrder,
 };
 use rustc_attr_ir::RustcVersion;
 use rustc_attr_parsing::parse_version;
@@ -435,6 +436,13 @@ define_Conf! {
     await_holding_invalid_types("await-holding-invalid-types"): Vec<DisallowedPathWithoutReplacement>,
     #[rename = disallowed_names]
     blacklisted_names("blacklisted-names"),
+    /// Whether to check bindings introduced by macros from other crates.
+    #[lints(builtin_type_shadow)]
+    builtin_type_shadow_check_external_macros("builtin-type-shadow-check-external-macros"): bool = false,
+    /// Which bindings to check for primitive type names. Use `"type-namespace"` for types and modules,
+    /// or `"type-and-value-namespaces"` to also check functions, constants, and local bindings.
+    #[lints(builtin_type_shadow)]
+    builtin_type_shadow_scope("builtin-type-shadow-scope"): BuiltinTypeShadowScope = BuiltinTypeShadowScope::TypeNamespace,
     /// For internal testing only, ignores the current `publish` settings in the Cargo manifest.
     #[lints(cargo_common_metadata)]
     cargo_ignore_publish("cargo-ignore-publish"): bool = false,

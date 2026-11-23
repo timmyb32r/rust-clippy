@@ -1,0 +1,241 @@
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:99:1
+   |
+LL | #[proc_macro_attr::generate_shadowing_includes]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:2:14
+   |
+LL | fn read_byte<i8>() {}
+   |              ^^
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:2:14
+   |
+LL | fn read_byte<i8>() {}
+   |              ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/iterable.inc:2:9
+   |
+LL |     let u8 = 1;
+   |         ^^
+
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:35:14
+   |
+LL |     for _ in builtin_shadow_dep::include_source!("includes/iterable.inc") {}
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/optional.inc:2:9
+   |
+LL |     let i8 = 1;
+   |         ^^
+
+error: this value has the same name as the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:39:5
+   |
+LL |     builtin_shadow_dep::include_source!("includes/optional.inc")?;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/includes/future.inc:2:9
+   |
+LL |     let u32 = 1;
+   |         ^^^
+
+error: this value has the same name as the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:43:5
+   |
+LL |     builtin_shadow_dep::include_source!("includes/future.inc").await;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:47:27
+   |
+LL |     let _ = format!("{}", builtin_shadow_dep::include_source!("includes/binding.inc"));
+   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:51:13
+   |
+LL |     let _ = builtin_shadow_dep::include_source!("includes/format_source.inc");
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:55:16
+   |
+LL |     let _ = 0..builtin_shadow_dep::include_source!("includes/binding.inc");
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i16`
+  --> tests/ui-toml/builtin_type_shadow/includes/for_pattern.inc:1:7
+   |
+LL | { for i16 in [1] {} }
+   |       ^^^
+
+error: this value has the same name as the built-in type `i16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:63:13
+   |
+LL |     let _ = builtin_shadow_dep::include_source!("includes/for_pattern.inc");
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:74:13
+   |
+LL |         let u8 = 7;
+   |             ^^
+
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/array_argument.inc:2:9
+   |
+LL |     let u8 = 6;
+   |         ^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:99:1
+   |
+LL | #[proc_macro_attr::generate_shadowing_includes]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:99:1
+   |
+LL | #[proc_macro_attr::generate_shadowing_includes]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:99:1
+   |
+LL | #[proc_macro_attr::generate_shadowing_includes]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes_nested.rs:99:1
+   |
+LL | #[proc_macro_attr::generate_shadowing_includes]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u64`
+  --> tests/ui-toml/builtin_type_shadow/includes/helper_alias.inc:1:6
+   |
+LL | type u64 = u16;
+   |      ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:1:6
+   |
+LL | type u8 = u16;
+   |      ^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:1:6
+   |
+LL | type u8 = u16;
+   |      ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u64`
+  --> tests/ui-toml/builtin_type_shadow/includes/helper_alias.inc:1:6
+   |
+LL | type u64 = u16;
+   |      ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/attributed_call.inc:2:1
+   |
+LL | builtin_shadow_dep::include_source!("binding.inc")
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/trailing_comma.inc:1:1
+   |
+LL | builtin_shadow_dep::include_source!("binding.inc"), 42
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/trailing_semicolon.inc:1:1
+   |
+LL | builtin_shadow_dep::include_source!("binding.inc"); 42
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/reader.inc:2:17
+   |
+LL |     let value = read!();
+   |                 ^^^^^^^
+
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/array_argument.inc:2:9
+   |
+LL |     let u8 = 6;
+   |         ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: aborting due to 36 previous errors
+

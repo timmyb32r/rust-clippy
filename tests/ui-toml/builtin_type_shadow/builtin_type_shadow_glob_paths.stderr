@@ -1,0 +1,11 @@
+error: this value has the same name as the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_glob_paths.rs:66:13
+   |
+LL |     pub use crate::definitions::*;
+   |             ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: aborting due to 1 previous error
+

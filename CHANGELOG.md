@@ -8006,6 +8006,8 @@ Released 2018-09-13
 [`array-size-threshold`]: https://doc.rust-lang.org/clippy/lint_configuration.html#array-size-threshold
 [`avoid-breaking-exported-api`]: https://doc.rust-lang.org/clippy/lint_configuration.html#avoid-breaking-exported-api
 [`await-holding-invalid-types`]: https://doc.rust-lang.org/clippy/lint_configuration.html#await-holding-invalid-types
+[`builtin-type-shadow-check-external-macros`]: https://doc.rust-lang.org/clippy/lint_configuration.html#builtin-type-shadow-check-external-macros
+[`builtin-type-shadow-scope`]: https://doc.rust-lang.org/clippy/lint_configuration.html#builtin-type-shadow-scope
 [`cargo-ignore-publish`]: https://doc.rust-lang.org/clippy/lint_configuration.html#cargo-ignore-publish
 [`check-grouped-late-init`]: https://doc.rust-lang.org/clippy/lint_configuration.html#check-grouped-late-init
 [`check-incompatible-msrv-in-tests`]: https://doc.rust-lang.org/clippy/lint_configuration.html#check-incompatible-msrv-in-tests

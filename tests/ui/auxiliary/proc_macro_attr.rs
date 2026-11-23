@@ -19,6 +19,46 @@ pub fn dummy(_args: TokenStream, input: TokenStream) -> TokenStream {
     input
 }
 
+/// Generate declarations carrying a span from the original function's name.
+#[proc_macro_attribute]
+pub fn forge_shadowed_names(_args: TokenStream, input: TokenStream) -> TokenStream {
+    let original = parse_macro_input!(input as ItemFn);
+    let span = original.sig.ident.span();
+    quote_spanned!(span=>
+        fn generated<u8>() {}
+        type u16 = i32;
+        use builtin_shadow_dep::types::*;
+    )
+    .into()
+}
+
+#[proc_macro_attribute]
+pub fn generate_shadowing_includes(_args: TokenStream, _input: TokenStream) -> TokenStream {
+    quote! {
+        include!("includes/alias_and_generic.inc");
+        fn generated_read() -> usize { include!("includes/binding.inc") }
+
+        macro_rules! generated_optional {
+            () => { include!("includes/optional.inc") };
+        }
+        renamed_helper!();
+    }
+    .into()
+}
+
+#[proc_macro]
+pub fn format_forged_include(input: TokenStream) -> TokenStream {
+    let marker = parse_macro_input!(input as syn::Ident);
+    let generated = quote_spanned!(marker.span()=> include!("includes/alias_expr.inc"));
+    quote!(format!("{}", #generated)).into()
+}
+
+#[proc_macro_attribute]
+pub fn replace_with_include(path: TokenStream, _input: TokenStream) -> TokenStream {
+    let path = parse_macro_input!(path as syn::LitStr);
+    quote!(include!(#path)).into()
+}
+
 #[proc_macro_attribute]
 pub fn fake_async_trait(_args: TokenStream, input: TokenStream) -> TokenStream {
     let mut item = parse_macro_input!(input as ItemTrait);

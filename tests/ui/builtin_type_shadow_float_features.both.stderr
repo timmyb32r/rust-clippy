@@ -1,0 +1,29 @@
+error: this generic shadows the built-in type `f16`
+  --> tests/ui/builtin_type_shadow_float_features.rs:25:12
+   |
+LL | fn generic<f16, f128>() {}
+   |            ^^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this generic shadows the built-in type `f128`
+  --> tests/ui/builtin_type_shadow_float_features.rs:25:17
+   |
+LL | fn generic<f16, f128>() {}
+   |                 ^^^^
+
+error: this binding shadows the built-in type `f16`
+  --> tests/ui/builtin_type_shadow_float_features.rs:12:13
+   |
+LL | use Half as f16;
+   |             ^^^
+
+error: this binding shadows the built-in type `f128`
+  --> tests/ui/builtin_type_shadow_float_features.rs:21:9
+   |
+LL |     use super::library::*;
+   |         ^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

@@ -1,0 +1,47 @@
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:2:14
+   |
+LL | fn read_byte<i8>() {}
+   |              ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:2:14
+   |
+LL | fn read_byte<i8>() {}
+   |              ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u64`
+  --> tests/ui-toml/builtin_type_shadow/includes/helper_alias.inc:1:6
+   |
+LL | type u64 = u16;
+   |      ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:1:6
+   |
+LL | type u8 = u16;
+   |      ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_and_generic.inc:1:6
+   |
+LL | type u8 = u16;
+   |      ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u64`
+  --> tests/ui-toml/builtin_type_shadow/includes/helper_alias.inc:1:6
+   |
+LL | type u64 = u16;
+   |      ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: aborting due to 6 previous errors
+

@@ -519,6 +519,7 @@ declare_clippy_lint! {
     /// * `unused`
     /// * `unused_braces`
     /// * `unused_import_braces`
+    /// * `clippy::builtin_type_shadow`
     /// * `clippy::disallowed_types`
     /// * `clippy::enum_glob_use`
     /// * `clippy::macro_use_imports`
@@ -530,6 +531,7 @@ declare_clippy_lint! {
     ///
     /// For `extern crate` items these lints are:
     /// * `unused_imports` on items with `#[macro_use]`
+    /// * `clippy::builtin_type_shadow`
     ///
     /// ### Why is this bad?
     /// Lint attributes have no effect on crate imports. Most

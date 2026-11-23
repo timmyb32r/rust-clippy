@@ -1,0 +1,77 @@
+error: this generic shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:28:20
+   |
+LL |         fn generic<u8>() {}
+   |                    ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this binding shadows the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:26:14
+   |
+LL |         type u32 = i32;
+   |              ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: aborting due to 10 previous errors
+

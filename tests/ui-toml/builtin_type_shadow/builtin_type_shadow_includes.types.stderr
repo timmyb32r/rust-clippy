@@ -1,0 +1,17 @@
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/attributes.inc:5:14
+   |
+LL | pub fn widen<i8>() {}
+   |              ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/attributes.inc:2:10
+   |
+LL | pub type u8 = u16;
+   |          ^^
+
+error: aborting due to 2 previous errors
+

@@ -1,0 +1,110 @@
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:17:9
+   |
+LL |     use crate::definitions::types::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:24:9
+   |
+LL |     use crate::definitions::types::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:31:13
+   |
+LL |     pub use crate::definitions::types::*;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:36:9
+   |
+LL |     use crate::reexport::*;
+   |         ^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:43:9
+   |
+LL |     use crate::reexport::*;
+   |         ^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:52:17
+   |
+LL | macro relay($module:ident) {
+LL |     pub mod $module {
+LL |         pub use crate::reexport::*;
+   |                 ^^^^^^^^^^^^^^^
+...
+LL | relay!(opaque_reexport);
+   | ----------------------- in this macro invocation
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:76:13
+   |
+LL | macro same_expansion($defs:ident) {
+...
+LL |         use super::$defs::*;
+   |             ^^^^^^^^^^^^
+...
+LL | same_expansion!(same_defs);
+   | -------------------------- in this macro invocation
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:82:13
+   |
+LL | macro same_expansion($defs:ident) {
+...
+LL |         use $defs::*;
+   |             ^^^^^
+...
+LL | same_expansion!(same_defs);
+   | -------------------------- in this macro invocation
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:107:9
+   |
+LL |     use crate::types::*;
+   |         ^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:113:9
+   |
+LL |     use types::*;
+   |         ^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:125:13
+   |
+LL |         use crate::types::*;
+   |             ^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:157:9
+   |
+LL |     use crate::reader_types::*;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:165:13
+   |
+LL |         use crate::reader_types::*;
+   |             ^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:173:9
+   |
+LL |     use crate::reader_types::*;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_glob_hygiene.rs:183:9
+   |
+LL |     use crate::reader_types::*;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 15 previous errors
+

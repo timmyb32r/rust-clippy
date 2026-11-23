@@ -1,0 +1,29 @@
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/includes/attributes.inc:5:14
+   |
+LL | pub fn widen<i8>() {}
+   |              ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes.rs:33:5
+   |
+LL |     builtin_shadow_dep::include_source!("includes/attributes.inc");
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/attributes.inc:2:10
+   |
+LL | pub type u8 = u16;
+   |          ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_includes.rs:33:5
+   |
+LL |     builtin_shadow_dep::include_source!("includes/attributes.inc");
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

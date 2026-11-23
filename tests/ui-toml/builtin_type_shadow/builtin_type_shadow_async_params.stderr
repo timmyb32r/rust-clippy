@@ -1,0 +1,35 @@
+error: this value has the same name as the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_async_params.rs:7:5
+   |
+LL |     u8: usize,
+   |     ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this value has the same name as the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_async_params.rs:9:9
+   |
+LL |     mut i8: usize,
+   |         ^^
+
+error: this value has the same name as the built-in type `u16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_async_params.rs:11:9
+   |
+LL |     ref u16: usize,
+   |         ^^^
+
+error: this value has the same name as the built-in type `i16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_async_params.rs:13:6
+   |
+LL |     (i16, _): (usize, usize),
+   |      ^^^
+
+error: this value has the same name as the built-in type `bool`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_async_params.rs:21:27
+   |
+LL |     let _closure = async |bool: usize| bool;
+   |                           ^^^^
+
+error: aborting due to 5 previous errors
+

@@ -442,6 +442,27 @@ The list of types which may not be held across an await point.
 * [`await_holding_invalid_type`](https://clippy.rust-lang.org/main/index.html#await_holding_invalid_type)
 
 
+## `builtin-type-shadow-check-external-macros`
+Whether to check bindings introduced by macros from other crates.
+
+**Default Value:** `false`
+
+---
+**Affected lints:**
+* [`builtin_type_shadow`](https://clippy.rust-lang.org/main/index.html#builtin_type_shadow)
+
+
+## `builtin-type-shadow-scope`
+Which bindings to check for primitive type names. Use `"type-namespace"` for types and modules,
+or `"type-and-value-namespaces"` to also check functions, constants, and local bindings.
+
+**Default Value:** `"type-namespace"`
+
+---
+**Affected lints:**
+* [`builtin_type_shadow`](https://clippy.rust-lang.org/main/index.html#builtin_type_shadow)
+
+
 ## `cargo-ignore-publish`
 For internal testing only, ignores the current `publish` settings in the Cargo manifest.
 

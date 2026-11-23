@@ -1,0 +1,154 @@
+error: this generic shadows the built-in type `u16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:38:5
+   |
+LL |     proc_macros::with_span!(input fn generated<u16>(_: u16) {});
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this generic shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:41:5
+   |
+LL |     proc_macros::with_span!(left fn distinct_spans<$u8>(_: $u8) {});
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:43:5
+   |
+LL |     builtin_shadow_dep::declare_generic!();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this generic shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:50:5
+   |
+LL |     #[proc_macro_attr::forge_shadowed_names]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/../../ui/auxiliary/builtin_shadow_included.inc:3:21
+   |
+LL | fn included_generic<i8>() {
+   |                     ^^
+
+error: this generic shadows the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:107:19
+   |
+LL | fn passed_through<u32, r#u16>() {
+   |                   ^^^
+
+error: this generic shadows the built-in type `u16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:107:24
+   |
+LL | fn passed_through<u32, r#u16>() {
+   |                        ^^^^^
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:164:5
+   |
+LL | /     proc_macros::with_span!(original
+LL | |
+LL | |
+LL | |         macro_rules! helper { () => { type u8 = u16; fn choose<i8>() {} }; }
+LL | |         helper!();
+LL | |     );
+   | |_____^
+
+error: this generic shadows the built-in type `i8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:186:5
+   |
+LL |     builtin_shadow_dep::include_source!("../../ui/auxiliary/builtin_shadow_included.inc");
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:24:9
+   |
+LL |     use builtin_shadow_dep::types::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u128`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:31:5
+   |
+LL | /     proc_macros::external!(
+LL | |         type u128 = i128;
+LL | |     );
+   | |_____^
+
+error: this binding shadows the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:34:5
+   |
+LL |     proc_macros::with_span!(input type u32 = i32;);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:36:5
+   |
+LL |     builtin_shadow_dep::declare_type!();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:50:5
+   |
+LL |     #[proc_macro_attr::forge_shadowed_names]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u16`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:50:5
+   |
+LL |     #[proc_macro_attr::forge_shadowed_names]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:60:18
+   |
+LL |     macro_rules! declare {
+LL |         () => {
+LL |             type i64 = u64;
+   |                  ^^^
+...
+LL |     declare!();
+   |     ---------- in this macro invocation
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/../../ui/auxiliary/builtin_shadow_included.inc:1:6
+   |
+LL | type u8 = u16;
+   |      ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:117:13
+   |
+LL |         use builtin_shadow_dep::types::*;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:121:52
+   |
+LL |         use builtin_shadow_dep::types::{Byte as _, *};
+   |                                                    ^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:164:5
+   |
+LL | /     proc_macros::with_span!(original
+LL | |
+LL | |
+LL | |         macro_rules! helper { () => { type u8 = u16; fn choose<i8>() {} }; }
+LL | |         helper!();
+LL | |     );
+   | |_____^
+
+error: this binding shadows the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:172:5
+   |
+LL |     proc_macros::with_span!(original macro_rules! later { () => { type u32 = i32; }; });
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_modes.rs:186:5
+   |
+LL |     builtin_shadow_dep::include_source!("../../ui/auxiliary/builtin_shadow_included.inc");
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 22 previous errors
+

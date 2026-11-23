@@ -1,0 +1,11 @@
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_checked_alias.rs:18:45
+   |
+LL |     use builtin_shadow_checked_dep::Byte as u8;
+   |                                             ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: aborting due to 1 previous error
+

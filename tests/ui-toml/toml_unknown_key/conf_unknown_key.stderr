@@ -38,6 +38,8 @@ LL | foobar = 42
            array-size-threshold
            avoid-breaking-exported-api
            await-holding-invalid-types
+           builtin-type-shadow-check-external-macros
+           builtin-type-shadow-scope
            cargo-ignore-publish
            check-grouped-late-init
            check-incompatible-msrv-in-tests

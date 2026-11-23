@@ -1,0 +1,149 @@
+error: this generic shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:28:20
+   |
+LL |         fn generic<u8>() {}
+   |                    ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this binding shadows the built-in type `u32`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:26:14
+   |
+LL |         type u32 = i32;
+   |              ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/includes/alias_expr.inc:2:10
+   |
+LL |     type u8 = u16;
+   |          ^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:37:13
+   |
+LL |     let _ = proc_macro_attr::format_forged_include!(Marker);
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:48:23
+   |
+LL |     let _ = plus_one!(builtin_shadow_dep::include_source!("includes/binding.inc"));
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:50:18
+   |
+LL |     let _ = vec![builtin_shadow_dep::include_source!("includes/binding.inc")];
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:52:18
+   |
+LL |     let _ = dbg!(builtin_shadow_dep::include_source!("includes/binding.inc"));
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:54:22
+   |
+LL |     let _ = matches!(builtin_shadow_dep::include_source!("includes/binding.inc"), 17);
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:56:16
+   |
+LL |     assert_eq!(builtin_shadow_dep::include_source!("includes/binding.inc"), 17);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/wrapped_argument.inc:1:11
+   |
+LL | plus_one!(builtin_shadow_dep::include_source!("binding.inc"))
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/shared_pair.inc:3:18
+   |
+LL |     let second = builtin_shadow_dep::include_source!("shared_reader.inc");
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:64:18
+   |
+LL |     let second = builtin_shadow_dep::include_source!("includes/shared_reader.inc");
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/binding.inc:2:9
+   |
+LL |     let i64 = 17;
+   |         ^^^
+   |
+   = note: duplicate diagnostic emitted due to `-Z deduplicate-diagnostics=no`
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/shared_module.inc:2:17
+   |
+LL |     let value = choose!();
+   |                 ^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/builtin_type_shadow_include_origins.rs:88:18
+   |
+LL |     let direct = #[proc_macro_attr::replace_with_include("includes/binding.inc")]
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this value has the same name as the built-in type `i64`
+  --> tests/ui-toml/builtin_type_shadow/includes/replaced_expr.inc:1:1
+   |
+LL | #[proc_macro_attr::replace_with_include("binding.inc")]
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 22 previous errors
+

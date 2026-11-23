@@ -1,0 +1,172 @@
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:6:33
+   |
+LL |     use core::primitive::u16 as u8;
+   |                                 ^^
+   |
+   = note: `-D clippy::builtin-type-shadow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::builtin_type_shadow)]`
+
+error: this binding shadows the built-in type `str`
+  --> tests/ui/builtin_type_shadow_bindings.rs:11:26
+   |
+LL |     use self::{Packet as str, Packet as _};
+   |                          ^^^
+
+error: this binding shadows the built-in type `isize`
+  --> tests/ui/builtin_type_shadow_bindings.rs:13:26
+   |
+LL |     extern crate core as isize;
+   |                          ^^^^^
+
+error: this binding shadows the built-in type `bool`
+  --> tests/ui/builtin_type_shadow_bindings.rs:18:12
+   |
+LL |     struct bool;
+   |            ^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:20:10
+   |
+LL |     enum i8 {}
+   |          ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:22:11
+   |
+LL |     union u8 {
+   |           ^^
+
+error: this binding shadows the built-in type `i16`
+  --> tests/ui/builtin_type_shadow_bindings.rs:26:9
+   |
+LL |     mod i16 {}
+   |         ^^^
+
+error: this binding shadows the built-in type `u16`
+  --> tests/ui/builtin_type_shadow_bindings.rs:28:11
+   |
+LL |     trait u16 {}
+   |           ^^^
+
+error: this binding shadows the built-in type `i32`
+  --> tests/ui/builtin_type_shadow_bindings.rs:30:10
+   |
+LL |     type i32 = core::primitive::u32;
+   |          ^^^
+
+error: this binding shadows the built-in type `u16`
+  --> tests/ui/builtin_type_shadow_bindings.rs:38:24
+   |
+LL |     use self::Alias as u16;
+   |                        ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:44:14
+   |
+LL |         type u8<T = core::primitive::u8> = T;
+   |              ^^
+
+error: this binding shadows the built-in type `u32`
+  --> tests/ui/builtin_type_shadow_bindings.rs:52:14
+   |
+LL |         type u32<const N: usize> = core::primitive::u32;
+   |              ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:57:14
+   |
+LL |         type u8<'a> = core::primitive::u8;
+   |              ^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:90:25
+   |
+LL |         use std::str as u8;
+   |                         ^^
+
+error: importing legacy numeric constants
+  --> tests/ui/builtin_type_shadow_bindings.rs:95:13
+   |
+LL |         use std::u8;
+   |             ^^^^^^^
+   |
+   = help: remove this import
+   = note: then `u8::<CONST>` will resolve to the respective associated constant
+   = note: `-D clippy::legacy-numeric-constants` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::legacy_numeric_constants)]`
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:116:13
+   |
+LL |         use super::super::bad::*;
+   |             ^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:121:13
+   |
+LL |         use super::super::bad::*;
+   |             ^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:126:13
+   |
+LL |         use builtin_shadow_dep::types::*;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:131:13
+   |
+LL |         use builtin_shadow_dep::types::*;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:140:13
+   |
+LL |         use super::bad::*;
+   |             ^^^^^^^^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:145:54
+   |
+LL |         use builtin_shadow_dep::types::{Byte as u16, *};
+   |                                                      ^
+
+error: this binding shadows the built-in type `u16`
+  --> tests/ui/builtin_type_shadow_bindings.rs:145:49
+   |
+LL |         use builtin_shadow_dep::types::{Byte as u16, *};
+   |                                                 ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:153:13
+   |
+LL |         use Format::*;
+   |             ^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:162:13
+   |
+LL |     pub use super::bad::*;
+   |             ^^^^^^^^^^
+
+error: this binding shadows the built-in type `i8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:169:13
+   |
+LL |         use ambiguous_reexports::*;
+   |             ^^^^^^^^^^^^^^^^^^^
+
+error: this binding shadows the built-in type `f64`
+  --> tests/ui/builtin_type_shadow_bindings.rs:189:29
+   |
+LL |     use std::f64::consts as f64;
+   |                             ^^^
+
+error: this binding shadows the built-in type `u8`
+  --> tests/ui/builtin_type_shadow_bindings.rs:202:10
+   |
+LL |     type u8<T = core::primitive::u8> = <T as Bytes>::Item;
+   |          ^^
+
+error: aborting due to 27 previous errors
+

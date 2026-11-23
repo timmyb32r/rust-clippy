@@ -36,9 +36,12 @@ extern crate rustc_index;
 extern crate rustc_infer;
 extern crate rustc_lexer;
 extern crate rustc_lint;
+extern crate rustc_metadata;
 extern crate rustc_middle;
+extern crate rustc_parse;
 extern crate rustc_parse_format;
 extern crate rustc_resolve;
+extern crate rustc_session;
 extern crate rustc_span;
 extern crate rustc_structures;
 extern crate rustc_target;
@@ -83,6 +86,7 @@ mod booleans;
 mod borrow_deref_ref;
 mod box_default;
 mod bufreader_stdin;
+mod builtin_type_shadow;
 mod byte_char_slices;
 mod cargo;
 mod casts;
@@ -511,6 +515,7 @@ rustc_lint::early_lint_methods!(
         ElseIfWithoutElse: else_if_without_else::ElseIfWithoutElse = else_if_without_else::ElseIfWithoutElse,
         IntPlusOne: int_plus_one::IntPlusOne = int_plus_one::IntPlusOne,
         Formatting: formatting::Formatting = formatting::Formatting,
+        BuiltinTypeShadow: builtin_type_shadow::BuiltinTypeShadow = builtin_type_shadow::BuiltinTypeShadow::new(conf),
         MiscEarlyLints: misc_early::MiscEarlyLints = misc_early::MiscEarlyLints,
         UnusedUnit: unused_unit::UnusedUnit = unused_unit::UnusedUnit,
         Precedence: precedence::Precedence = precedence::Precedence,
@@ -556,6 +561,7 @@ rustc_lint::early_lint_methods!(
 rustc_lint::late_lint_methods!(
     crate::combined_late_lint_pass,
     [CombinedLateLintPass, (tcx: TyCtxt<'tcx>, conf: &'static Conf, format_args: FormatArgsStorage, attrs: AttrStorage), [
+        BuiltinTypeShadow: builtin_type_shadow::BuiltinTypeShadow = builtin_type_shadow::BuiltinTypeShadow::new(conf),
         ArithmeticSideEffects: operators::arithmetic_side_effects::ArithmeticSideEffects = operators::arithmetic_side_effects::ArithmeticSideEffects::new(conf),
         DumpHir: utils::dump_hir::DumpHir = utils::dump_hir::DumpHir,
         Author: utils::author::Author = utils::author::Author,

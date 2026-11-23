@@ -887,6 +887,14 @@ impl DeserializeOrDefault<()> for SourceItemOrderingWithinModuleItemGroupings {
 }
 
 conf_enum! {
+    #[derive(Debug, PartialEq, Eq)]
+    pub BuiltinTypeShadowScope {
+        TypeNamespace("type-namespace"),
+        TypeAndValueNamespaces("type-and-value-namespaces"),
+    }
+}
+
+conf_enum! {
     #[derive(Debug, PartialEq, Eq, Hash)]
     pub InherentImplLintScope {
         Crate("crate"),
