@@ -5,7 +5,7 @@ use rustc_data_structures::fx::FxHashMap;
 use rustc_lexer::{FrontmatterAllowed, TokenKind, tokenize};
 use rustc_lint::{EarlyContext, EarlyLintPass, LintContext as _, impl_lint_pass};
 use rustc_span::source_map::SourceMap;
-use rustc_span::{Span, SpanData};
+use rustc_span::{Pos as _, Span, SpanData};
 use std::mem;
 
 /// Populates [`FormatArgsStorage`] with AST [`FormatArgs`] nodes
@@ -110,8 +110,12 @@ impl FormatArgsCollector {
             .iter()
             .try_fold(src.range.end, |start, arg| {
                 let (expr_sp_lo, expr_sp_hi) = walk_span_to_context(arg.expr.span, fmt_sp.ctxt)?.lo_hi();
-                let expr_start = (expr_sp_lo.0 - src.sf.start_pos.0) as usize;
-                let expr_end = (expr_sp_hi.0 - src.sf.start_pos.0) as usize;
+                // An argument from include! can retain a span in another source file.
+                if !src.sf.contains(expr_sp_lo) || !src.sf.contains(expr_sp_hi) {
+                    return None;
+                }
+                let expr_start = src.sf.relative_position(expr_sp_lo).to_usize();
+                let expr_end = src.sf.relative_position(expr_sp_hi).to_usize();
                 let mut tks = tokenize(src_text.get(start..expr_start)?, FrontmatterAllowed::No)
                     .map(|x| x.kind)
                     .filter(|x| {
